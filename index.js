@@ -2,9 +2,21 @@ import express from "express";
 import { getVidsrcSourcesId, getVidsrcSourceDetails, getVidsrcSources, getSubtitles } from "./src/hooks.js";
 import { encodeId, generateRandomIp, generateRandomUserAgent ,getFutoken } from "./src/vidplay/utils.js";
 import fetch from 'cross-fetch';
+import cors from 'cors';
 
 const app = express()
 const port = 3000;
+app.use(cors());
+
+const corsOptions = {
+    origin: '*',
+    methods: [],
+    allowedHeaders: [],
+    exposedHeaders: [],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.status(200).json({
